@@ -3,38 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>九宫格目标搜索实验</title>
-    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/psychojs/2023.2.3/dist/psychojs-2023.2.3.css">
+    <title>九宫格实验</title>
 </head>
 <body>
     <div id="root"></div>
 
-    <!-- 用国内CDN加载依赖库 -->
-    <script src="https://cdn.bootcdn.net/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/psychojs/2023.2.3/dist/psychojs-2023.2.3.iife.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/psychojs@2023.2.3/dist/psychojs-2023.2.3.iife.js"></script>
 
     <script>
-        window.onload = async function(){
-            try{
-                // 读取并解压 resources.zip
-                let response = await fetch("./resources.zip");
-                let zipData = await response.blob();
-                let zip = new JSZip();
-                await zip.loadAsync(zipData);
-                // 把解压后的文件暴露给实验脚本使用
-                window.imgZip = zip;
-
-                // 加载你的实验脚本
-                let expScript = document.createElement("script");
-                expScript.src = "./九宫格目标搜索实验.js";
-                expScript.type = "module";
-                document.body.appendChild(expScript);
-            }catch(err){
-                console.error("加载出错：", err);
-                alert("页面资源加载异常，请刷新页面重试");
-            }
-        }
+        window.onload = function() {
+            let script = document.createElement('script');
+            script.src = './九宫格目标搜索实验.js';
+            script.type = 'module';
+            document.body.appendChild(script);
+        };
     </script>
 </body>
 </html>
